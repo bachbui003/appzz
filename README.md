@@ -91,8 +91,8 @@ Angular IT/Admin   ─┘
 appzz/
 ├── backend/          # Spring Boot API (implemented)
 ├── mobile/           # Flutter mobile application
-├── web/              # Angular user web application
-├── admin/            # Angular IT/Admin web application
+├── web/              # Angular user web application (implemented)
+├── admin/            # Angular IT/Admin web application (implemented)
 └── docs/             # Architecture and product documentation
 ```
 
@@ -183,3 +183,23 @@ mvn spring-boot:run
 ```
 
 The API starts on port `8080` by default and exposes initial endpoints for users, departments, tickets, comments, attachments, assignment, status changes, and dashboard summary.
+
+## Frontend Quick Start
+
+Install dependencies and run the user web portal:
+
+```bash
+cd web
+npm install
+npm start
+```
+
+Install dependencies and run the IT/Admin portal:
+
+```bash
+cd admin
+npm install
+npm start
+```
+
+The user portal defaults to port `4200`; the admin portal defaults to port `4300`. Both call the Spring Boot API at `http://localhost:8080/api`.

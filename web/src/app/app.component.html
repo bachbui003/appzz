@@ -1,0 +1,28 @@
+<main class="shell">
+  <section class="card">
+    <h1>AppZZ Ticket Portal</h1>
+    <p>Đăng nhập giả lập với requesterId = 1. Người dùng có thể tạo ticket, upload ảnh, comment và theo dõi trạng thái.</p>
+  </section>
+
+  <section class="card">
+    <h2>Tạo ticket</h2>
+    <div class="grid">
+      <input [(ngModel)]="form.title" placeholder="Tiêu đề lỗi" />
+      <input [(ngModel)]="form.category" placeholder="Phân loại" />
+      <select [(ngModel)]="form.priority"><option>LOW</option><option>MEDIUM</option><option>HIGH</option><option>URGENT</option></select>
+    </div>
+    <p><textarea [(ngModel)]="form.description" rows="4" style="width:100%" placeholder="Mô tả lỗi"></textarea></p>
+    <button (click)="createTicket()">Gửi ticket</button>
+  </section>
+
+  <section class="grid">
+    <article class="card" *ngFor="let ticket of tickets">
+      <h3>{{ ticket.title }}</h3>
+      <p>{{ ticket.description }}</p>
+      <p><span class="badge">{{ ticket.status }}</span> <strong>{{ ticket.priority }}</strong> · {{ ticket.category }}</p>
+      <input [(ngModel)]="commentText[ticket.id]" placeholder="Nhập comment" />
+      <button (click)="addComment(ticket)">Comment</button>
+      <p><input [(ngModel)]="attachmentUrl[ticket.id]" placeholder="URL ảnh lỗi" /> <button (click)="upload(ticket)">Upload ảnh</button></p>
+    </article>
+  </section>
+</main>
